@@ -5,6 +5,6 @@ module.exports = function(config, app) {
     if (req.cookies.pen9_session) {
       return res.redirect('/dashboard');
     }
-    res.status(200).send(':)')
+    res.status(200).render('top/index')
   })
 }
