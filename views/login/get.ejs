@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Login | Pen9</title>
+  </head>
+  <body>
+    <form action="/login" method="post">
+      <% if (typeof fail != 'undefined') { %>
+        <p>Incorrect Credentials</p>
+      <% } %>
+      <input type='text' name='username'/>
+      <input type='password' name='password'/>
+      <input type='submit'></input>
+    </form>
+  </body>
+</html>

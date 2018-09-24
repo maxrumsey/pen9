@@ -1,0 +1,41 @@
+body {
+  font-family: 'Inconsolata', monospace;
+}
+#pageBox {
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  width:30em;
+  height:25em;
+  margin-top: -12.5aem; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border-radius: 16px;
+  background-color: #f3f3f3;
+  padding: 15px;
+  text-align: center;
+}
+#pageBox input {
+  display: block;
+  margin: 1em auto;
+  border: none;
+  border-radius: 16px;
+  padding: 15px;
+}
+#gradientBackground {
+  background-image: linear-gradient(to bottom right, #FFD151, #F0A202);
+}
+.bottomLeftBox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+#return {
+  background-color: #FFDDA1;
+  padding: 15px 30px;
+}
+#return p {
+  margin: 0;
+}
+#return:visited {
+  color: black;
+}
