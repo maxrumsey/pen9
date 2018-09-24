@@ -10,7 +10,7 @@ module.exports = function(config, app) {
     }
   })
   app.post('/create', function(req, res) {
-    if (!req.body.username || !req.body.password) return res.status(400).render('login/create', {fail: true});
+    if (!req.body.username || !req.body.password) return res.status(400).render('login/create', {fail: true, msg: 'You have not provided the necessary values.'});
     let user = {
       id: nanoid(12),
       password: {
@@ -21,10 +21,10 @@ module.exports = function(config, app) {
     }
     user.password.hash = sha256(user.password.salt + '' + req.body.password)
     app.db.models.user.findOne({name: user.name}, function(err, result) {
-      if (err) return res.status(400).render('login/create', {fail: true});
-      if (result) return res.status(400).render('login/create', {fail: true});
+      if (err) return res.status(500).render('login/create', {fail: true, msg: 'Internal Database Error'});
+      if (result) return res.status(400).render('login/create', {fail: true, msg: 'Username not Unique.'});
       app.db.models.user.create(user, function(err, result) {
-        if (err) return res.status(500).render('login/create', {fail: true});
+        if (err) return res.status(500).render('login/create', {fail: true, msg: 'Internal Database Error'});
         res.status(201).render('login/create-success', { username: req.body.username });
       })
     })

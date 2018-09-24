@@ -10,21 +10,28 @@ module.exports = function(config, app) {
     }
   })
   app.post('/login', function(req, res) {
-    if (!req.body.username || !req.body.password) return res.render('login/get', {fail: true});
+    if (!req.body.username || !req.body.password) return res.render('login/get', {fail: true, msg: 'Username or Password Incorrect.'});
     app.db.models.user.findOne({ name: req.body.username }, function(err, result) {
-      if (!result) return res.render('login/get', {fail: true});
+      if (err) {
+        console.log(err);
+        return res.render('login/get', {fail: true, msg: 'Internal Database Error'});
+      }
+      if (!result) return res.render('login/get', {fail: true, msg: 'Username or Password Incorrect.'});
       let hash = sha256(result.password.salt + '' + req.body.password);
-      if (hash != result.password.hash) return res.render('login/get', {fail: true});
+      if (hash != result.password.hash) return res.render('login/get', {fail: true, msg: 'Username or Password Incorrect.'});
 
-      let token = nanoid(120);
+      let token = nanoid(240);
       app.db.models.token.create({
         id: result.id,
         age: new Date(),
         token: token
       }, function(err) {
-        if (err) throw err;
+        if (err) {
+          console.log(err);
+          return res.render('login/get', {fail: true, msg: 'Internal Database Error'});
+        }
         res.cookie('pen9_session', token)
-        res.redirect('/dashboard')
+        return res.redirect('/dashboard')
       })
     })
   })

@@ -1,6 +1,5 @@
 const nanoid = require('nanoid');
 module.exports = function(config, app) {
-  console.log(1)
   app.get('/note/new', (req, res) => {
     if (req.loggedIn !== true) return res.redirect('/login');
     res.render('note/new')
