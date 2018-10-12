@@ -1,8 +1,11 @@
+if (!process.env.PORT) {
+  require('dotenv').config()
+}
 const Server = require('./structures/server.js');
 let config = {
-  port: 8181,
+  port: process.env.PORT,
   db: {
-    string: 'mongodb://localhost:27017/pen9'
+    string: process.env.DBSTRING
   }
 }
 let app = new Server(config)
