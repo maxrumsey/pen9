@@ -55,7 +55,7 @@ body {
 }
 .screenImg {
   background-image: url('https://images.pexels.com/photos/606541/pexels-photo-606541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  padding: 250px;
+  padding: 25vh 20vw;
 }
 .screenImg p {
   background-color: #FFD151;
@@ -82,4 +82,47 @@ body {
   background-color: #ffa0a0;
   border: 1px solid #f23535;
   border-left-width: 16px;
+}
+#userinfo-header {
+  display: block;
+  padding: 15px;
+}
+#userinfo-header a {
+  float: right;
+  margin-right: 15px;
+  padding: 5px;
+  background-color: yellow;
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+}
+#userinfo-header #normal {
+  color: black;
+  background-color: white !important;
+  border-color: white;
+}
+#dash-notes {
+  margin: 0 20vw;
+}
+.note {
+  background-color: orange;
+  padding: 15 20px;
+  border: 3px solid orange;
+}
+.note:hover {
+  border: 3px solid yellow;
+}
+.note:nth-child(even) {
+  background-color: yellow;
+  border: 3px solid yellow;
+}
+.note:nth-child(even):hover {
+  border-color: orange;
+}
+.note .name {
+  display: block;
+  margin-bottom: 16px;
+}
+.note a {
+  float: right;
 }

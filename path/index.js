@@ -4,4 +4,8 @@ module.exports = function(config, app) {
   require('./create.js')(config, app);
   require('./dashboard.js')(config, app);
   require('./note/new.js')(config, app);
+  require('./note/update.js')(config, app);
+  require('./note/edit.js')(config, app);
+  require('./note/view.js')(config, app);
+
 }
