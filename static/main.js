@@ -46,3 +46,44 @@ function getNoteValue() {
 function loadEditor() {
   getNoteValue()
 }
+function deleteNote(id) {
+  let xmlhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for old IE browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.open("DELETE", "/note/" + id + "/delete", true);
+  xmlhttp.send()
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 204) {
+      let element = document.getElementById(id)
+      element.parentNode.removeChild(element);
+    } else if (this.readyState == 4) {
+      console.error(this.status)
+    }
+  };
+}
+function createNote() {
+  let noteName = document.getElementById('noteCreateBoxInput').value;
+  let xmlhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for old IE browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.open("POST", "/note/new", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("noteName=" + encodeURIComponent(noteName))
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 204) {
+      window.location.reload(true);
+    } else if (this.readyState == 4) {
+      console.error(this.status)
+    }
+  };
+}

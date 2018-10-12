@@ -84,8 +84,9 @@ body {
   border-left-width: 16px;
 }
 #userinfo-header {
-  display: block;
   padding: 15px;
+  background-color: #F0A202;
+  height: 5vh;
 }
 #userinfo-header a {
   float: right;
@@ -105,19 +106,13 @@ body {
   margin: 0 20vw;
 }
 .note {
-  background-color: orange;
+  background-color: #FFD151;
   padding: 15 20px;
-  border: 3px solid orange;
-}
-.note:hover {
-  border: 3px solid yellow;
+  border: 3px solid #FFD151;
 }
 .note:nth-child(even) {
-  background-color: yellow;
-  border: 3px solid yellow;
-}
-.note:nth-child(even):hover {
-  border-color: orange;
+  background-color: #F0A202;
+  border: 3px solid #F0A202;
 }
 .note .name {
   display: block;
@@ -125,4 +120,21 @@ body {
 }
 .note a {
   float: right;
+}
+.note button {
+  float: right;
+  color: red;
+  margin-right: 10px;
+}
+#editor-div {
+  margin: 0 20vw;
+}
+#noteCreateBox {
+  text-align: center;
+  margin: 20px 0;
+  background-color: #FFD151;
+  padding: 20px;
+}
+#createNoteButton {
+  cursor: pointer;
 }

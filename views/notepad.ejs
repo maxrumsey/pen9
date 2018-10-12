@@ -1,18 +1,27 @@
 <html>
   <head>
+    <title><%= note.name %> - Pen9</title>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2kvpjj3hf38vl8lsh11cuu5ytmmkbtzkclboh4k12szfu51r"></script>
     <script src='/main.js'></script>
     <script>
       var current = '';
       tinymce.init({
         selector: '#notepad',
+        height: (window.innerHeight - 200)
       });
       setInterval(checkProgress, 2000);
       getNoteValue();
     </script>
+    <link rel="stylesheet" type="text/css" href="/pen9.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   </head>
   <body onload="loadEditor()">
-    <h1><%= note.name %></h1>
-    <textarea name='value' id='notepad'></textarea>
+    <header id='userinfo-header'>
+      <a href='/dashboard'>Dashboard</a>
+    </header>
+    <div id='editor-div'>
+      <h1><%= note.name %></h1>
+      <textarea name='value' id='notepad'></textarea>
+    </div>
   </body>
 </html>

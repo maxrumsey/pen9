@@ -18,7 +18,7 @@ module.exports = function(config, app) {
     if (!note.id) return res.status(500);
 
     app.db.models.note.create(note, function(err, result) {
-      res.redirect('/dashboard');
+      res.sendStatus(204);
     })
   })
 }

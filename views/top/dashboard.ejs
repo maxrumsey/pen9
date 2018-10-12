@@ -2,22 +2,30 @@
   <head>
     <link rel="stylesheet" type="text/css" href="pen9.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <script src='/main.js'></script>
   </head>
   <body id='dashboard'>
     <header id='userinfo-header'>
+      <a href='/logout'>Log Out</a>
       <a id='normal' href='/settings'>
         <%= user.name %>
       </a>
       <a href='/settings'>Settings</a>
-      <a href='/note/new'>Create Note</a>
+      <a onclick="document.getElementById('noteCreateBox').style.display = 'block';" id='createNoteButton'>Create Note</a>
     </header>
     <div id='dash-notes'>
       <h1>Your Notes</h1>
+      <div id='noteCreateBox' style='display: none'>
+        <h2>Create Note</h2>
+        <input id='noteCreateBoxInput' type="text"></input>
+        <button onclick="createNote()">Submit</button>
+      </div>
       <% notes.forEach(function(note) { %>
-        <div class='note'>
+        <div class='note' id='<%=note.id%>'>
           <b class='name'><%= note.name %></b>
           <%= note.ageRelative %>
-          <a href='/note/<%=note.id%>/edit'>Edit</a>
+          <a href='/note/<%=note.id%>/edit'>Edit / View</a>
+          <button class='deletebutton' onclick="deleteNote('<%=note.id%>')">Delete</button>
         </div>
       <% }) %>
     </div>
